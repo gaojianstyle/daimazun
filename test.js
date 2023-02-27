@@ -23,7 +23,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
-var dmz = require('./dist/index.js')
+// var dmz = require('./dist/index.js')
 var dmz = require('./index.js')
 
 let object_demo = {
@@ -45,9 +45,9 @@ function run_time(run) {
 }
 
 
-run_time(() => {
-    console.log(object_demo.g_object_to_json());
-})
+// run_time(() => {
+//     console.log(object_demo.g_object_to_json());
+// })
 
 
 // run_time(() => {
