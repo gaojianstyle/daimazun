@@ -42,7 +42,8 @@
 //
 
 
-
+// Object prototype 原型链扩展
+require("./g/prototype/prototype.js");
 const demo = require("./demo/demo.js");
 const file = require("./file/file.js");
 const root = require("./root/root.js");
@@ -52,18 +53,16 @@ const jsonfile = require("./file/jsonfile/jsonfile.js");
 const g = require("./g/g.js");
 const img = require("./img/img.js");
 const ini = require("./file/ini/ini.js");
-// Object prototype 原型链扩展
-require("./g/prototype/prototype.js");
 const f = require("./f/f.js");
 const n = require("./n/n.js");
 const redis = require("./redis/redis.js")
 
 module.exports = {
-    root: root.root,
     demo: demo.demo,
+    file: file.file,
+    root: root.root,
     email: email.email,
     mysql: mysql.mysql,
-    file: file.file,
     jsonfile: jsonfile.jsonfile,
     g: new g.g,
     img: new img.img,
@@ -72,3 +71,8 @@ module.exports = {
     n: new n.n,
     redis: redis.redis
 }
+
+
+
+
+

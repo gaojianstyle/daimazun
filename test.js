@@ -2,7 +2,7 @@
  * @Author: daimazun.com gaojianstyle@163.com
  * @Date: 2023-02-27 10:45:37
  * @LastEditors: daimazun.com gaojianstyle@163.com
- * @LastEditTime: 2023-02-27 13:34:52
+ * @LastEditTime: 2023-02-27 14:38:07
  * @FilePath: \daimazun\test.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -22,7 +22,8 @@
  * @FilePath: \daimazun\test.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-const dmz = require('./index.js')
+// const dmz = require('./index.js')
+const dmz = require('./dist/index.js')
 
 // console.log(dmz.demo.demo().echo('hello world!'))
 
@@ -39,11 +40,16 @@ let object_demo = {
 
 
 function run_time(run) {
+    console.log(`当前时间:${new Date()}`)
     let t1 = new Date();
     run()
     console.log('运行时间:' + (new Date() - t1));
 }
 
+
+run_time(() => {
+
+})
 
 
 run_time(() => {
@@ -51,9 +57,9 @@ run_time(() => {
 })
 
 
-run_time(() => {
+// run_time(() => {
 
-})
+// })
 
 // run_time(() => {
 
