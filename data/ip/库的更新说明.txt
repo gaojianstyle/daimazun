@@ -1,0 +1,22 @@
+
+纯真ip库更新下载
+
+https://github.com/out0fmemory/qqwry.dat 中下载 qqwry_lastest.dat 文件放入此文件夹即可
+
+
+
+
+GeoIP2全球库更新下载
+
+
+下载前需要注册账号
+https://www.maxmind.com/en/accounts/717518/geoip/downloads
+
+
+
+
+
+
+
+
+
