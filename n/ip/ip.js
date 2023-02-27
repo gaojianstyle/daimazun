@@ -261,13 +261,13 @@ module.exports = {
 
 let ip_address = '112.53.233.0';
 
-// let ips = new ip(ip_address)
-// console.log(ips.ipToInt32())
-// console.log(ips.searchIndex())
-// console.log(ips.getAddress())
-// console.log(ips.getArea())
-// console.log(ips.getBounds())
-// console.log(ips.msg())
+let ips = new ip(ip_address)
+console.log(ips.ipToInt32())
+console.log(ips.searchIndex())
+console.log(ips.getAddress())
+console.log(ips.getArea())
+console.log(ips.getBounds())
+console.log(ips.msg())
 
 var ips1 = [
     '114.48.198.220',

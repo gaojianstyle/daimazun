@@ -5,7 +5,7 @@ const fs = require("fs-extra");
 const path = require('path');
 const geoip = require("geoip-lite");
 require("../g/prototype/prototype.js");
-const {Reader} = require("@maxmind/geoip2-node");
+const { Reader } = require("@maxmind/geoip2-node");
 const ip33 = require("./ip/ip.js");
 
 
@@ -70,7 +70,7 @@ class n {
      */
     jwt(object, secret_key, time_out_s) {
         try {
-            return jwt.sign(object, secret_key, {expiresIn: time_out_s})
+            return jwt.sign(object, secret_key, { expiresIn: time_out_s })
         } catch (e) {
             return false;
         }
@@ -256,7 +256,9 @@ module.exports = {
 };
 
 
-
+// 测试
+// const n1 = new n.n;
+// console.log(n1.phone_format("17888888888"))
 
 
 
