@@ -55,7 +55,7 @@ const ini = require("./file/ini/ini.js");
 // Object prototype 原型链扩展
 require("./g/prototype/prototype.js");
 const f = require("./f/f.js");
-// const n = require("./n/n.js");
+const n = require("./n/n.js");
 const redis = require("./redis/redis.js")
 
 module.exports = {
@@ -69,6 +69,6 @@ module.exports = {
     img: new img.img,
     ini: ini.ini,
     f: new f.f,
-    // n: new n.n,
+    n: new n.n,
     redis: redis.redis
 }
