@@ -51,7 +51,7 @@ class email {
 
         // 使用先前创建的传输器的 sendMail 方法传递消息对象
         return await new Promise((resolve, reject) => {
-            try{
+            try {
                 this.transporter.sendMail(mailOptions, (err, info) => {
                     if (err) {
                         // console.log("==邮件发送失败==");
@@ -61,7 +61,7 @@ class email {
                         resolve(info);
                     }
                 });
-            }catch (e){
+            } catch (e) {
                 reject('参数错误');
             }
         });

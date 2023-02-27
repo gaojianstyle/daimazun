@@ -3,19 +3,8 @@ const path = require('path');
 module.exports = {
     resolve: {
         fallback: {
-            'path': require.resolve('path-browserify'),
-            'fs': require.resolve('fs-web'),
-            // "buffer": false,
-            // "crypto": false,
-            // "util": false,
-            // "stream": false,
-            // "util": false,
-            // "timers": false,
-            // "url": false,
-            "buffer": require.resolve("buffer/"),
-            "util": require.resolve("util/"),
-            "crypto": require.resolve("crypto-browserify"),
-            "stream": require.resolve("stream-browserify")
+            // 'path': require.resolve('path-browserify'),
+            // 'fs': require.resolve('fs-web'),
         }
     },
     entry: [
