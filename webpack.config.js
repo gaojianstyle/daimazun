@@ -4,7 +4,18 @@ module.exports = {
     resolve: {
         fallback: {
             'path': require.resolve('path-browserify'),
-            'fs': require.resolve('fs-web')
+            'fs': require.resolve('fs-web'),
+            // "buffer": false,
+            // "crypto": false,
+            // "util": false,
+            // "stream": false,
+            // "util": false,
+            // "timers": false,
+            // "url": false,
+            "buffer": require.resolve("buffer/"),
+            "util": require.resolve("util/"),
+            "crypto": require.resolve("crypto-browserify"),
+            "stream": require.resolve("stream-browserify")
         }
     },
     entry: [
@@ -20,9 +31,9 @@ module.exports = {
     performance: {
         hints: 'warning',
         //入口起点的最大体积
-        maxEntrypointSize: 50000000,
+        maxEntrypointSize: 99990000000,
         //生成文件的最大体积
-        maxAssetSize: 30000000,
+        maxAssetSize: 99990000000,
         //只给出 js 文件的性能提示
         assetFilter: function (assetFilename) {
             return assetFilename.endsWith('.js');
@@ -30,6 +41,15 @@ module.exports = {
     },
     module: {
         rules: [
+            // 指定要加载的规则
+
+            {
+                test: /\.ts$/, // test指定的是规则生效的文件
+                use: 'ts-loader',
+                // 排除要处理的文件
+                exclude: /node-modules/
+            },
+
             {
                 test: /\.(txt|mmdb|dat|exe|json)$/,
                 use: [
@@ -56,6 +76,10 @@ module.exports = {
                 type: "asset/resource",
                 generator: { filename: "font/[name]_[hash:6][ext]" }
             }
-        ]
+        ],
+        // 模块配置：让webpack了解哪些方法可以被当作模块引入
+        // resolve: {
+        //     extensions: ['.ts', '.js']
+        // }
     }
 };
