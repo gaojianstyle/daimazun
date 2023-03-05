@@ -283,6 +283,7 @@ class n {
      */
     idCard_create(object) {
         const idCard_k = require('./idCard/idCard.js')
+        //先随便传参一个身份证号
         return new idCard_k.idCard('330305201105182636').idCard_create(object);
     }
 

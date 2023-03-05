@@ -2,7 +2,7 @@
  * @Author: daimazun.com gaojianstyle@163.com
  * @Date: 2023-02-27 10:45:37
  * @LastEditors: daimazun.com gaojianstyle@163.com
- * @LastEditTime: 2023-03-06 02:55:02
+ * @LastEditTime: 2023-03-06 03:15:03
  * @FilePath: \daimazun\test.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -137,6 +137,28 @@ async function demo1() {
 
 
 
-run_time(() => {
-    console.log(n.phone_format("17888888888"))
-})
+// run_time(() => {
+//     console.log(n.phone_format("17888888888"))
+// })
+
+
+
+
+
+
+// run_time(() => {
+//     console.log(n.idCard_format("341122199705050432"))
+// })
+
+
+
+// run_time(() => {
+//     n.idCard_create({
+//         age_range: [0, 90],
+//         gender: "男",
+//         address: "安徽",
+//         zodiac: "金牛座",// 金牛座
+//         zodiac_zh: "牛"// 牛
+//     })
+// })
+

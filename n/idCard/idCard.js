@@ -99,7 +99,7 @@ class idCard {
             }
             return r;
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             return false;
         }
     }
