@@ -7,9 +7,8 @@ const geoip = require("geoip-lite");
 require("../g/prototype/prototype.js");
 const { Reader } = require("@maxmind/geoip2-node");
 const ip33 = require("./ip/ip.js");
-
-
-
+const phone_k = require("./phone/phone.js");
+const idCard_k = require("./idCard/idCard.js");
 
 
 class n {
@@ -89,6 +88,11 @@ class n {
         }
     }
 
+    /**
+     * 解析ip的所有信息,离线库,开源库中最全的~~
+     * @param ip
+     * @returns {Promise<unknown>}
+     */
     async ip_format(ip) {
         return await new Promise(async function (resolve, reject) {
             try {
@@ -187,6 +191,10 @@ class n {
                 let ipMsg = {
                     ip: geoip.pretty(ip),
                     isp: chunzheng1.address[1],
+                    // isp 缩写
+                    isp_abbr: ip_chunzhen.Area,
+                    // isp 英文
+                    isp_en: JSON.parse(JSON.stringify(reader_ASN)).autonomousSystemOrganization,
                     // 大陆编码
                     continent_code: JSON.parse(JSON.stringify(reader_City)).continent.code,
                     continent: JSON.parse(JSON.stringify(reader_City)).continent.names.g_object_to_map().get('zh-CN'),
@@ -248,6 +256,36 @@ class n {
         })
     }
 
+    /**
+     * 解析手机号的所有信息
+     * @param phone
+     * @returns {{province: string, phone: *, city: string, postcode: string, net: string, areacode: string}}
+     */
+    phone_format(phone) {
+        const phone_k = require('./phone/phone.js')
+        return phone_k.phone_format(phone)
+    }
+
+    /**
+     * 解析身份证号码
+     * @param idCard
+     * @returns {{is_idCard: (boolean|*)}|{birthDay: {date: *, zodiac_zh: *, week: *, month: *, year: *, zodiac: *|undefined|string, nong: *, day: *}, address: {area: *, all: {code, text}, province: *, city: (string|CityRecord|((ipAddress: string) => Promise<City>)|((ipAddress: string) => City)|string|*)}, gender: string, is_idCard: *, idCard, idCard_address_type: (string|*), idCard_endNum, age: *}}
+     */
+    idCard_format(idCard) {
+        const idCard_k = require('./idCard/idCard.js')
+        return new idCard_k.idCard(idCard).idCard_format();
+    }
+
+    /**
+     * 按照指定条件生成身份证号码
+     * @param object
+     * @returns {*|{is_idCard: (boolean|boolean)}|{birthDay: {date: *, zodiac_zh: *, week: *, month: *, year: *, zodiac: *|undefined|string, nong: *, day: *}, address: {area: *, all: {code, text}, province: *, city: (string|CityRecord|((ipAddress: string) => Promise<City>)|((ipAddress: string) => City)|string|*)}, gender: string, is_idCard: *, idCard, idCard_address_type: (string|*), idCard_endNum, age: *}}
+     */
+    idCard_create(object) {
+        const idCard_k = require('./idCard/idCard.js')
+        return new idCard_k.idCard('330305201105182636').idCard_create(object);
+    }
+
 
 }
 
@@ -255,20 +293,153 @@ module.exports = {
     n: n
 };
 
-// ! 测试 //////////////////////////////////////////////////////////////////////////
-function test() {
-    // 测试
-    const n1 = new n;
-    // console.log(n1.phone_format("17888888888"))
 
-    n1.ip_format("27.115.83.255").then(r => {
-        console.log(r.g_object_to_json())
-    }).catch(e => {
-        console.log("发生错误:", e)
+
+
+// ! 测试/////////////////////////////////////////////////////////////////////
+
+function test() {
+    ///////////////////////
+    let n_test = new n();
+    console.log(n_test.phone_format("17856901519"))
+    n_test.ip_format("27.115.83.255").then(r => {
+        console.log(r)
     })
+
+    console.log(n_test.phone_format("13516401724"))
+    //{
+    //   phone: '17888888888',
+    //   isp: '移动',
+    //   province: '北京',
+    //   city: '北京',
+    //   postcode: '100000',
+    //   areacode: '010'
+    // }
+    console.log(n_test.idCard_format('330305201105182636'))
+    //{
+    //   is_idCard: true,
+    //   idCard_endNum: 6,
+    //   idCard: '330305201105182636',
+    //   idCard_address_type: '大陆',
+    //   gender: '男',
+    //   age: 11,
+    //   address: {
+    //     province: { code: '330000', text: '浙江省' },
+    //     city: { code: '330300', text: '温州市' },
+    //     area: { code: '330305', text: '洞头区' },
+    //     all: { code: '330305', text: '浙江省温州市洞头区' }
+    //   },
+    //   birthDay: {
+    //     date: '2011/05/18',
+    //     nong: '2011/4/16',
+    //     year: '2011',
+    //     month: '05',
+    //     day: '18',
+    //     week: '星期三',
+    //     zodiac: '金牛座',
+    //     zodiac_zh: '兔'
+    //   }
+    // }
+    console.log(n_test.idCard_create({
+        age_range: [0, 90],
+        gender: "男",
+        address: "安徽",
+        zodiac: "",// 金牛座
+        zodiac_zh: ""// 牛
+    }))
+
+    function is_null(params) {
+        try {
+            if (params === undefined
+                || params === null
+                || params === ''
+            ) {
+                return true;
+            }
+        } catch (e) {
+            console.log(e)
+            return e;
+        }
+    }
+
+    let num;
+    num = null;
+    let num1;
+
+
+    // import { createWorker } from 'tesseract.js';
+    const Tesseract = require('tesseract.js')
+    const { createWorker } = require("tesseract.js");
+
+    https://github.com/naptha/tessdata/tree/gh-pages/4.0.0
+
+    // 微 软 雅 黑 字 体
+    var img_src = ''
+    // let img_src = 'https://img0.baidu.com/it/u=2764866256,2243193474&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=386';
+    // img_src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13957040277%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671714382&t=dcbeb2e330f00dee04d8c5784ac69cc5'
+    // img_src = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.itc.cn%2Fq_70%2Fimages03%2F20201114%2F185832c1971d4d8a9319dd236dfb49a2.jpeg&refer=http%3A%2F%2Fp2.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671714382&t=0bf88d8c76194abb81be7469e20a7152'
+    // img_src = 'https://img-blog.csdnimg.cn/img_convert/59084c9b45a0c1c52e4fc388424c9027.png'
+    img_src = './images/1.png'
+
+
+    // // console.log(worker)
+    // Tesseract.recognize(
+    //     img_src,
+    //     'chi_sim', //eng
+    //     { logger: m => console.log(m) }
+    // ).then(({ data: { text } }) => {
+    //     console.log(text);
+    // })
+
+    //
+
+
+    async function ocr(img_src, to_string = false) {
+        return await new Promise((resolve, reject) => {
+            try {
+                const { createWorker } = require('tesseract.js')
+                const worker = createWorker({
+                    // langPath: '../../data/ocr',
+                    logger: m => {
+                        // console.log(m)
+                    }
+                });
+                (async () => {
+                    await worker.load();
+                    await worker.loadLanguage('chi_sim');
+                    await worker.initialize('chi_sim');
+                    const { data: { text } } = await worker.recognize(img_src);
+                    // console.log(text);
+                    // 去除字符串中的空格和换行符
+                    if (to_string) {
+                        resolve(text.g_string_replace_all(" ", "").g_string_replace_all("\n", ""));
+                    } else {
+                        resolve(text);
+                    }
+                    await worker.terminate();
+                })();
+
+            } catch (e) {
+                console.log(e)
+                reject(false);
+            }
+        })
+    }
+
+
+
+
+
+
+    // console.log("是否为空:", num, is_null(num))
+
+
 }
 
-test()
+
+// test()
+
+
 
 
 
