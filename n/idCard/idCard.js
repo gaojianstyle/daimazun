@@ -112,9 +112,9 @@ module.exports = {
 }
 
 ///////测试调用////////////////////////////
-let idCard_demo = '330305201105182636';
-let idc = new idCard(idCard_demo);
-console.log(idc.idCard_format(idCard))
+// let idCard_demo = '330305201105182636';
+// let idc = new idCard(idCard_demo);
+// console.log(idc.idCard_format(idCard))
 //{
 //   is_idCard: true,
 //   idCard_endNum: 6,
