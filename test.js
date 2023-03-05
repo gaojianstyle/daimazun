@@ -67,39 +67,44 @@ function run_time(run) {
 
 
 
+// run_time(() => {
+//     let from = {
+//         host: 'smtp.163.com',
+//         port: 465,
+//         user: 'gaojian_daimazun@163.com',
+//         // 邮箱授权码
+//         pass: 'SGAGWJEDNOVIHMBS',
+//     }
+
+//     let to = {
+//         from: '收件人', // 发件人
+//         to: 'gaojianstyle@163.com, 1875238798@qq.com', // 收件人
+//         cc: 'gaojianstyle@163.com',
+//         subject: 'Hello ✔', // 主题
+//         text: '默认-这是一封测试邮件12', // plain text body
+//         html: '<b>默认-这是一封测试邮件html</b>', // html body
+//         // 发送文件的文件路径数组,可为空,例如['D:/www/1.txt','D:/www/2.txt']
+//         attachments: []
+//     }
+
+
+//     let email = new dmz.email(from);
+
+//     email.send(to).then(r => {
+//         console.log("发送成功:", r)
+//     }).catch(e => {
+//         console.log("发送失败:", e)
+//     });
+// })
+
+
+
 run_time(() => {
-    let from = {
-        host: 'smtp.163.com',
-        port: 465,
-        user: 'gaojian_daimazun@163.com',
-        // 邮箱授权码
-        pass: 'SGAGWJEDNOVIHMBS',
-    }
 
-    let to = {
-        from: '收件人', // 发件人
-        to: 'gaojianstyle@163.com, 1875238798@qq.com', // 收件人
-        cc: 'gaojianstyle@163.com',
-        subject: 'Hello ✔', // 主题
-        text: '默认-这是一封测试邮件12', // plain text body
-        html: '<b>默认-这是一封测试邮件html</b>', // html body
-        // 发送文件的文件路径数组,可为空,例如['D:/www/1.txt','D:/www/2.txt']
-        attachments: []
-    }
-
-
-    let email = new dmz.email(from);
-
-    email.send(to).then(r => {
-        console.log("发送成功:", r)
-    }).catch(e => {
-        console.log("发送失败:", e)
-    });
 })
 
-// run_time(() => {
 
-// })
+
 
 // run_time(() => {
 
