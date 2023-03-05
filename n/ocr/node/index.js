@@ -1,4 +1,4 @@
-const {createWorker} = require('tesseract.js');
+const { createWorker } = require('tesseract.js');
 const path = require('path');
 require("../../../g/prototype/prototype.js");
 
@@ -34,7 +34,7 @@ async function orc() {
                 await worker.load();
                 await worker.loadLanguage('chi_sim');
                 await worker.initialize('chi_sim');
-                const {data: {text}} = await worker.recognize(path.join(__dirname, '..', 'images', '1.png'));
+                const { data: { text } } = await worker.recognize(path.join(__dirname, '..', 'images', '1.png'));
                 // console.log(str_to_long(text));
                 resolve(text);
                 await worker.terminate();
