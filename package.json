@@ -1,13 +1,21 @@
 {
   "name": "daimazun",
-  "version": "2.0.0",
-  "description": "",
+  "version": "1.0.37",
+  "description": "地表最强node框架,海纳百川.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaojianstyle/daimazun.git"
+  },
   "author": "高健 gaojianstyle@163.com",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaojianstyle/daimazun/issues"
+  },
+  "homepage": "https://github.com/gaojianstyle/daimazun",
   "dependencies": {
     "@maxmind/geoip2-node": "3.5.0",
     "async": "3.2.4",

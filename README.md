@@ -1,3 +1,12 @@
+**觉得好用就赞个棒棒糖吧!**
+
+
+
+<img src="https://note.youdao.com/yws/res/8754/WEBRESOURCEebe7ae6f447a36b4e4d6d7c4b73405ce" style="width:20%">
+<img src="https://note.youdao.com/yws/res/8756/WEBRESOURCEa3ade4399b3498ceccc4581a4bbce6d1" style="width:20%">
+
+
+
 # 主要期望
 
 > **2022年10月12日 22:07:29** 
@@ -24,7 +33,7 @@
 
 
 
-# 框架列表
+# 作者其他框架列表
 
 **后端框架:**
 
@@ -34,6 +43,9 @@
 
 - [daimazun-web](https://www.npmjs.com/package/daimazun-web) 
 
+**前后端通用框架:**
+
+- [g-anything](https://www.npmjs.com/package/g-anything) 
 
 
 # 安装
@@ -53,6 +65,19 @@ yarn add daimazun
 ```JavaScript
 const dmz = require("daimazun");
 ```
+
+
+
+# 版本更新说明
+
+| 版本   | 更新内容                                                     |
+| ------ | ------------------------------------------------------------ |
+| 1.0.34 | 增加基于5个离线库的ip解析方法:<br/>[ip_format(ip)](#ip_format(ip)) 这应该是目开源库能找到的最新、最全、最准、最优雅便捷的nodejs的ip解析库，光是离线库就用到了5个。<br/>解析内容包含了基础的洲国省市区、运营商、还包含了经纬度、以及经纬度的的精确半径、以及ip所属网段、甚至可以判定ip是否为代理和vpn等特征来判断是否存在攻击性,还有很多妙用的值，可结合自身自行探索。 |
+| 1.0.35 | 增加基于身份证号离线库的两个关于身份证号的方法: <br/>[phone_format(phone)](#ip_format(ip)) 解析手机号的所有信息<br/>[idCard_format(idCard)](#手机号解析) 解析身份证号码<br/>[idCard_create(object)](#身份证号解析) 按照指定条件生成身份证号码,特殊情况下非常好用 |
+| 1.0.36 | object原型链扩展新增:<br/>注: object模块中的方法都是前后端通用的,也就是说g_ocr方法前后端通用.<br/>[.g_str_match_arr(match_arr)](#.g_str_match_arr(match_arr))  从字符串中匹配数组存在的值,并返回数组.<br/>[g_ocr(img_src,to_string)](#g_ocr(img_src,to_string)) ocr 图片文字识别.<br/>修复说明文档的错误. |
+| 1.0.37 | 修复前面所有版本的bug,修复1.0.34-1.0.36引用严重bug,增强稳定性,更新离线库,向下兼容,github源代码挂载,欢迎提交代码,让我们继续愉快的玩耍吧! |
+
+
 
 
 
@@ -120,12 +145,17 @@ const dmz = require("daimazun");
   - g_orm_insert(table_name, params_object_arr) object数组转sql insert语句
   - g_regular_folder(folder_name) 文件夹名称是否合法
   - g_random_string(len, charStr) 生成随机字符串
+  - [.g_str_match_arr(match_arr)](#.g_str_match_arr(match_arr))  从字符串中匹配数组存在的值,并返回数组
+  - [g_ocr(img_src,to_string)](#g_ocr(img_src,to_string))  ocr 图片文字识别
 - **[n模块](#n模块)**
   - md5(p) 根据字符串或文件(路径)生成md5码
   - sha256(p) 根据字符串或文件(路径)生成sha256码
   - jwt(object, secret_key, time_out_s) 生成加密 token
   - jwt_de(token, secret_key) 解密 token
-  -  **[ip_format(ip)](#ip_format(ip))** 解析一个ip的所有信息,距离今为止应该是开源库上最全的ip解析，本地离线库的ops不是在线解析可比的
+  -  [ip_format(ip)](#ip_format(ip)) 解析一个ip的所有信息,距离今为止应该是开源库上最全的ip解析，本地离线库的ops不是在线解析可比的
+  -   [phone_format(phone)](#ip_format(ip)) 解析手机号的所有信息
+  -  [idCard_format(idCard)](#手机号解析) 解析身份证号码
+  -  [idCard_create(object)](#身份证号解析) 按照指定条件生成身份证号码
 
 
 ​			
@@ -133,8 +163,6 @@ const dmz = require("daimazun");
 ​		
 
 # 调用示例
-
-
 
 
 ```javascript
@@ -936,6 +964,46 @@ console.log("以指定的字符串生成,生成随机生成字符串:", g_random
 // 以指定的字符串生成,生成随机生成字符串: 爱球地我地我爱你我我你你你你我地地球你地你我你你球你我爱你球
 ```
 
+#### <a id=".g_str_match_arr(match_arr)">.g_str_match_arr(match_arr)</a>
+
+从字符串中匹配数组存在的值,并返回数组
+
+```JavaScript
+// 从字符串中匹配数组存在的值,并返回数组
+let str = "氯化钠 (Sodium chloride)，是一种无机离子化合物，化学式NaCl，无色立方结晶或细小结晶粉末，味咸。";
+let match_arr = ["离子化合物", "食盐", "原子核", "电子", "无色"];
+console.log(str.g_str_match_arr(match_arr));
+// [ '离子化合物', '无色' ]
+```
+
+#### <a id="g_ocr(img_src,to_string)">g_ocr(img_src,to_string)</a>
+
+ocr 图片文字识别
+
+参数 img_src : 图片地址,可以是网络图片或本地图片
+
+参数 to_string : true/false 将生成的结果中去除空格和换行符
+
+```JavaScript
+
+let img_src = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fexp-picture.cdn.bcebos.com%2Fa007a9b1eef97fbd431e6000b74133bad24133f5.jpg%3Fx-bce-process%3Dimage%2Fresize%2Cm_lfit%2Cw_500%2Climit_1&refer=http%3A%2F%2Fexp-picture.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671793685&t=5fadd5691c060a78b113fe8bd94449de"
+
+// 原格式输出
+g_ocr(img_src, false).then(r => {
+    console.log(r)
+})
+// 微 软 雅 黑
+// ABCDEFGHIJKLMNOPQRSTUVWXYZ
+// 0123456789
+
+
+// 将生成的结果中去除空格和换行符
+g_ocr(img_src, true).then(r => {
+    console.log(r)
+})
+// 微软雅黑ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+```
+
 
 
 
@@ -1034,7 +1102,7 @@ console.log("token的加密生成与解密",params)
 
 
 
-## <a id="**ip_format(ip) **">**ip_format(ip) **</a>
+## <a id="ip_format(ip)">ip_format(ip) </a>
 
 这应该是目开源库能找到的最新、最全、最准、最优雅便捷的nodejs的ip解析库，光是离线库就用到了5个。
 
@@ -1044,7 +1112,7 @@ console.log("token的加密生成与解密",params)
 
 
 
-这个方法确实废了我不少功夫,为了增加解析出信息的准确性,使用了5个离线ip库和两个npm ip解析包,对结果相互考证,并且还在github上找到并重构了一个10年未更新的npm库,而且去官网和github上找最新的离线库资源,可谓煞费苦心.
+这个方法确实废了我不少功夫,为了增加解析出信息的准确性,使用了5个离线ip库和两个npm ip解析包,对结果相互考证,并且还在github上找到并重构了一个10年未更新的npm库,而且去离线库官网和github上找最新的离线库资源,可谓煞费苦心.
 
 **其他ip解析库存在的问题**
 
@@ -1128,7 +1196,9 @@ n.ip_format("27.115.83.255").then(r => {
 //{
 //  "db_dmz": {
 //    "ip": "27.115.83.255",
-//    "isp": "上海大学", //运营归属
+//    "isp": "上海大学", //运营归属,ips以此为准
+//    "isp_abbr": '上海大学',//isp缩写
+//    "isp_en": 'China Unicom Shanghai network',// isp 英文
 //    "continent_code": "AS", //洲缩写
 //    "continent": "亚洲",
 //    "country_code": "CN",//国家缩写
@@ -1381,15 +1451,100 @@ n.ip_format("27.115.83.255").then(r => {
 
 ```
 
+<a id="手机号解析">手机号码解析 </a>
+
+```JavaScript
+const dmz = require('daimazun');
+const n = dmz.n;
+console.log(n.phone_format("17888888888"))
+//{
+//   phone: '17888888888',
+//   isp: '移动',
+//   province: '北京',
+//   city: '北京',
+//   postcode: '100000',//邮编
+//   areacode: '010'//拨号时的区号
+// }
+```
+
+<a id="身份证号解析">身份证号解析 </a>
+
+应该是目前开源库最准最全的,使用了两个离线库相互考证.
+
+不但可以解析身份证号,而且可以根据五大条件来生成指定身份证号.
+
+```JavaScript
+const dmz = require('daimazun');
+const n = dmz.n;
+console.log(n.idCard_format('330305201105182636'))
+//{
+//   is_idCard: true, //参数是否是身份证号码
+//   idCard_endNum: 6,//身份证号最后一位数字
+//   idCard: '330305201105182636',
+//   idCard_address_type: '大陆',//身份证号类别,大陆 或 港澳台
+//   gender: '男',//性别
+//   age: 11,//年龄
+//   address: {
+//     province: { code: '330000', text: '浙江省' },//省编号和省名
+//     city: { code: '330300', text: '温州市' },//市编号和市名
+//     area: { code: '330305', text: '洞头区' },//区编号和区名
+//     all: { code: '330305', text: '浙江省温州市洞头区' }//完整编号和完整地址
+//   },
+//   birthDay: {
+//     date: '2011/05/18',//出生日期,公历
+//     nong: '2011/4/16',//出生日期,农历
+//     year: '2011',//出生年份
+//     month: '05',//出生月份
+//     day: '18',//出生月份的天
+//     week: '星期三',//出生当天星期几
+//     zodiac: '金牛座',//星座
+//     zodiac_zh: '兔'//生肖
+//   }
+// }
+
+// 格外注意: idCard_create()方法是一个耗时操作
+// 原理是批量生成身份证号,逐个递归解析,知道找出符合所有条件的身份证号后返回
+// 所以输入的精度要求过高时有很可能无法找出符合条件的身份证号而返回 false
+// 推荐只使用其中1-2个指定参数来生成身份证号.
+console.log(n.idCard_create({
+    age_range: [0,90],//指定年龄范围
+    gender: "男",//指定性别
+    address: "安徽",//指定地址中包含的字段
+    zodiac: "金牛座",//指定星座
+    zodiac_zh: "牛"//指定生肖
+}))
+// 推荐只使用其中1-2个指定参数来生成身份证号,例如:
+console.log(n.idCard_create({
+    address: "安徽",//指定地址中包含的字段
+    zodiac_zh: "牛"//指定生肖
+}))
 
 
-
-
-
-
-
-
-
+//{
+//   is_idCard: true,
+//   idCard_endNum: 0,
+//   idCard: '340611200904247310',
+//   idCard_address_type: '大陆',
+//   gender: '男',
+//   age: 13,
+//   address: {
+//     province: { code: '340000', text: '安徽省' },
+//     city: { code: '340600', text: '淮北市' },
+//     area: { code: '340611', text: '郊区' },
+//     all: { code: '340611', text: '安徽省淮北市郊区' }
+//   },
+//   birthDay: {
+//     date: '2009/04/24',
+//     nong: '2009/3/29',
+//     year: '2009',
+//     month: '04',
+//     day: '24',
+//     week: '星期五',
+//     zodiac: '金牛座',
+//     zodiac_zh: '牛'
+//   }
+// }
+```
 
 
 

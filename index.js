@@ -2,7 +2,7 @@
  * @Author: daimazun.com gaojianstyle@163.com
  * @Date: 2023-02-27 10:45:37
  * @LastEditors: daimazun.com gaojianstyle@163.com
- * @LastEditTime: 2023-03-06 00:58:49
+ * @LastEditTime: 2023-03-06 03:23:28
  * @FilePath: \daimazun\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -51,7 +51,7 @@
 
 
 // Object prototype 原型链扩展
-require("./g/prototype/prototype.js"); //!此模块可使用g-anything模块代替
+require("./g/prototype/prototype.js"); //!此模块可使用g-anything包代替,下载 npm i g-anything
 const root = require("./root/root.js");
 const demo = require("./demo/demo.js");
 const file = require("./file/file.js");
