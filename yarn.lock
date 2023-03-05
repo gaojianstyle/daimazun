@@ -120,6 +120,11 @@ charenc@0.0.2:
   resolved "https://registry.npmmirror.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
   integrity sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==
 
+chinese-lunar@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/chinese-lunar/-/chinese-lunar-0.1.4.tgz#c0fa7b927ef1625993e60b28c429dc44eb9c0276"
+  integrity sha512-E4seb9UZkSJtkm65Ry2ZLWTw5Z87DOyGcCePdg3ft7da342hnEliMtcDAPSn+YSo/o0xl1Egmhh671kxEJgY+g==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmmirror.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -357,6 +362,11 @@ has@^1.0.3:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
+idcard@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/idcard/-/idcard-4.1.1.tgz#d1302df4ab868bd2d5646764bfa9199351a57a3d"
+  integrity sha512-IfuWI1bI/IohizSggg8xxXdJ3qID2yW6eUlHf3XEmB0+iBEab8BQky9lU2UVLv7BjmDxYbA8kjXTR3G3l8yj5g==
+
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.npmmirror.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -448,6 +458,14 @@ isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmmirror.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
+
+js-idcard@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/js-idcard/-/js-idcard-1.0.7.tgz#18916b5904b88a67695f54a7b421531944ba654b"
+  integrity sha512-UKCXA0kRJ15aPG6rlDIl9aMCInHj3kUcvNqyc+JrTbofOQKj1bnebw/yhJ9OTVjD3iNrsnRWdw2PRGz9NfYzhw==
+  dependencies:
+    chinese-lunar "^0.1.4"
+    node-constellation "^0.0.5"
 
 jsbn@1.1.0:
   version "1.1.0"
@@ -632,6 +650,11 @@ mysql@2.18.1:
     readable-stream "2.3.7"
     safe-buffer "5.1.2"
     sqlstring "2.3.1"
+
+node-constellation@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/node-constellation/-/node-constellation-0.0.5.tgz#37440337855280b092325f5e451c36d48c9eed59"
+  integrity sha512-pd66GQMBfbZTTePAjHF3eI6fY4cN0Wh4g8QubnIoIZQ7E5Od0IjNJCGZjoqDfCMY9Ky96TsKwbv1eRayu06iKg==
 
 nodemailer@6.8.0:
   version "6.8.0"
