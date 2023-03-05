@@ -2,7 +2,7 @@
  * @Author: daimazun.com gaojianstyle@163.com
  * @Date: 2023-02-27 10:45:37
  * @LastEditors: daimazun.com gaojianstyle@163.com
- * @LastEditTime: 2023-02-27 20:02:10
+ * @LastEditTime: 2023-03-06 01:21:19
  * @FilePath: \daimazun\test.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -24,7 +24,9 @@
  */
 
 // var dmz = require('./dist/index.js')
+const { demo } = require('./index.js');
 var dmz = require('./index.js')
+const n = dmz.n;
 
 let object_demo = {
     name: "小明",
@@ -37,10 +39,11 @@ let object_demo = {
 
 
 
-function run_time(run) {
+async function run_time(run) {
     console.log(`当前时间:${new Date()}`)
     let t1 = new Date();
-    run()
+    run();
+
     console.log('运行时间:' + (new Date() - t1));
 }
 
@@ -99,16 +102,40 @@ function run_time(run) {
 
 
 
-run_time(() => {
-
-})
-
-
-
-
 // run_time(() => {
+//     let img_src = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fexp-picture.cdn.bcebos.com%2Fa007a9b1eef97fbd431e6000b74133bad24133f5.jpg%3Fx-bce-process%3Dimage%2Fresize%2Cm_lfit%2Cw_500%2Climit_1&refer=http%3A%2F%2Fexp-picture.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671793685&t=5fadd5691c060a78b113fe8bd94449de"
 
+//     // 原格式输出
+//     g_ocr(img_src, false).then(r => {
+//         console.log(r)
+//     })
+//     // 微 软 雅 黑
+//     // ABCDEFGHIJKLMNOPQRSTUVWXYZ
+//     // 0123456789
 // })
+
+
+
+
+async function demo1() {
+    console.log(`当前时间:${new Date()}`)
+    let t1 = new Date();
+    ////////////////////////////////////////////////////////
+    await n.ip_format("27.115.83.255").then(r => {
+        // resolve(r.g_object_to_json())
+        console.log(r.g_object_to_json().g_json_to_map())
+    }).catch(e => {
+        console.log("发生错误:", e)
+    })
+    /////////////////////////////////////////////////////////
+    console.log('运行时间:' + (new Date() - t1));
+}
+
+demo1()
+
+
+
+
 
 // run_time(() => {
 

@@ -59,7 +59,10 @@ function pushString(array, addr) {
         array.push('未知');
         return 0;
     }
-    var buf = new Buffer(255);
+    // !去除警告,将 new Buffer() 改成 new Buffer.alloc() 
+    // 参考 https://blog.csdn.net/palet/article/details/85808424
+    var buf = new Buffer.alloc(255);
+
     var stringEnd = addr;
     while (geodat[stringEnd]) {
         stringEnd++;
@@ -259,43 +262,52 @@ module.exports = {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-let ip_address = '112.53.233.0';
 
-let ips = new ip(ip_address)
-console.log(ips.ipToInt32())
-console.log(ips.searchIndex())
-console.log(ips.getAddress())
-console.log(ips.getArea())
-console.log(ips.getBounds())
-console.log(ips.msg())
+function test() {
+    // let ip_address = '112.53.233.0';
+    // let ip_address = '58.247.180.106' //上海的
+    let ip_address = '114.103.16.166'
 
-var ips1 = [
-    '114.48.198.220',
-    '127.0.0.1',
-    '114.247.50.32',
-    '42.121.18.30',
-    '116.255.159.28',
-    '175.41.22.214',
-    '113.46.75.217',
-    '61.134.36.43',
-    '60.247.103.19',
-    '106.155.177.79',
-    '60.84.104.199',
-    '110.75.173.26',
-    '114.138.236.192',
-    '255.146.13.80',
-    '230.68.58.59',
-    '117.69.234.14',
-    '233.235.99.138',
-    '242.148.224.221',
-    '110.75.195.1'
-];
+    let ips = new ip(ip_address)
+    console.log(ips.ipToInt32())
+    console.log(ips.searchIndex())
+    console.log(ips.getAddress())
+    console.log(ips.getArea())
+    console.log(ips.getBounds())
+    console.log(ips.msg())
 
-//
-// for(let i in ips1){
-//     // console.log(i,ips1[i])
-//     let value = ips1[i]
-//     let ips2 = new ip(value)
-//     console.log(`${JSON.stringify(ips2.msg())}`)
-//     // console.log(`${ips2.msg()}`);
-// }
+    var ips1 = [
+        '114.48.198.220',
+        '127.0.0.1',
+        '114.247.50.32',
+        '42.121.18.30',
+        '116.255.159.28',
+        '175.41.22.214',
+        '113.46.75.217',
+        '61.134.36.43',
+        '60.247.103.19',
+        '106.155.177.79',
+        '60.84.104.199',
+        '110.75.173.26',
+        '114.138.236.192',
+        '255.146.13.80',
+        '230.68.58.59',
+        '117.69.234.14',
+        '233.235.99.138',
+        '242.148.224.221',
+        '110.75.195.1'
+    ];
+
+
+    for (let i in ips1) {
+        // console.log(i,ips1[i])
+        let value = ips1[i]
+        let ips2 = new ip(value)
+        console.log(`${JSON.stringify(ips2.msg())}`)
+        // console.log(`${ips2.msg()}`);
+    }
+
+}
+
+
+// test()

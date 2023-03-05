@@ -255,14 +255,20 @@ module.exports = {
     n: n
 };
 
+// ! 测试 //////////////////////////////////////////////////////////////////////////
+function test() {
+    // 测试
+    const n1 = new n;
+    // console.log(n1.phone_format("17888888888"))
 
-// 测试
-// const n1 = new n.n;
-// console.log(n1.phone_format("17888888888"))
+    n1.ip_format("27.115.83.255").then(r => {
+        console.log(r.g_object_to_json())
+    }).catch(e => {
+        console.log("发生错误:", e)
+    })
+}
 
-
-
-
+test()
 
 
 
