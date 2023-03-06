@@ -1,6 +1,6 @@
 {
   "name": "daimazun",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "地表最强node框架,海纳百川.",
   "main": "index.js",
   "scripts": {

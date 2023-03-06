@@ -1,11 +1,14 @@
-**觉得好用就赞个棒棒糖吧!**
+# 喜欢就支持个棒棒糖吧!
 
 
 
-<img src="https://note.youdao.com/yws/res/8754/WEBRESOURCEebe7ae6f447a36b4e4d6d7c4b73405ce" style="width:20%">
-<img src="https://note.youdao.com/yws/res/8756/WEBRESOURCEa3ade4399b3498ceccc4581a4bbce6d1" style="width:20%">
+|                             微信                             |                            支付宝                            |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="https://cdn.staticaly.com/gh/gaojianstyle/g-imgs@main/public/pay/pay-gaojian-weixin.png" style="width:70%;"> | <img src="https://cdn.staticaly.com/gh/gaojianstyle/g-imgs@main/public/pay/pay-gaojian-zhifubao.png" style="width:70%"> |
 
 
+
+​	
 
 # 主要期望
 
@@ -76,6 +79,7 @@ const dmz = require("daimazun");
 | 1.0.35 | 增加基于身份证号离线库的两个关于身份证号的方法: <br/>[phone_format(phone)](#ip_format(ip)) 解析手机号的所有信息<br/>[idCard_format(idCard)](#手机号解析) 解析身份证号码<br/>[idCard_create(object)](#身份证号解析) 按照指定条件生成身份证号码,特殊情况下非常好用 |
 | 1.0.36 | object原型链扩展新增:<br/>注: object模块中的方法都是前后端通用的,也就是说g_ocr方法前后端通用.<br/>[.g_str_match_arr(match_arr)](#.g_str_match_arr(match_arr))  从字符串中匹配数组存在的值,并返回数组.<br/>[g_ocr(img_src,to_string)](#g_ocr(img_src,to_string)) ocr 图片文字识别.<br/>修复说明文档的错误. |
 | 1.0.37 | 修复前面所有版本的bug,修复1.0.34-1.0.36引用严重bug,增强稳定性,更新离线库,向下兼容,github源代码挂载,欢迎提交代码,让我们继续愉快的玩耍吧! |
+| 1.0.38 | 补充前面版本缺失的重要原型链,修复1.0.37版本自动运行测试并打印的问题. |
 
 
 
