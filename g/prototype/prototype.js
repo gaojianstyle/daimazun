@@ -21,6 +21,7 @@
 // const moment = require("moment");
 
 
+const { createWorker } = require("tesseract.js");
 /**
  * map 转 prototype
  * @param map
@@ -28,8 +29,8 @@
 Object.defineProperty(Object.prototype, "g_map_to_object", {
     value: function () {
         return Array.from(this).reduce((obj, [key, value]) =>
-                // @ts-ignore
-                Object.assign(obj, {[key]: value})
+            // @ts-ignore
+            Object.assign(obj, { [key]: value })
             , {});
     }
 });
@@ -41,8 +42,8 @@ Object.defineProperty(Object.prototype, "g_map_to_object", {
 Object.defineProperty(Object.prototype, "g_map_to_json", {
     value: function () {
         let object = Array.from(this).reduce((obj, [key, value]) =>
-                // @ts-ignore
-                Object.assign(obj, {[key]: value})
+            // @ts-ignore
+            Object.assign(obj, { [key]: value })
             , {});
         return JSON.stringify(object)
     }
@@ -202,7 +203,7 @@ Object.defineProperty(Object.prototype, "g_arr_for", {
 Object.defineProperty(Object.prototype, "g_uuid", {
     value: function () {
         // const uuid = require('uuid');
-        const {v4: uuidv4} = require('uuid');
+        const { v4: uuidv4 } = require('uuid');
         // uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
         return uuidv4().replace(new RegExp('-', "gm"), '');
     }
@@ -282,7 +283,7 @@ Object.defineProperty(Object.prototype, "g_time", {
             end_years: moment(time).endOf('years').format('YYYY-MM-DD HH:mm:ss'),
 
         }
-        msg = {...msg1, ...moment(time).toObject()}
+        msg = { ...msg1, ...moment(time).toObject() }
         msg.months = moment(time).format('MM');
         // 处理黑魔法,星期天为0就是黑魔法,给我变回来!
         if (msg.week === 0) {
@@ -365,7 +366,7 @@ Object.defineProperty(Object.prototype, "g_time_format", {
             end_years: moment(this).endOf('years').format('YYYY-MM-DD HH:mm:ss'),
 
         }
-        msg = {...msg1, ...moment(this).toObject()}
+        msg = { ...msg1, ...moment(this).toObject() }
         msg.months = moment(this).format('MM');
         // 处理黑魔法,星期天为0就是黑魔法,给我变回来!
         if (msg.week === 0) {
@@ -703,7 +704,60 @@ Object.defineProperty(Object.prototype, "g_random_string", {
 });
 
 
+/**
+ * ocr 图片文字识别
+ */
+Object.defineProperty(Object.prototype, "g_ocr", {
+    value: async function ocr(img_src, to_string = false) {
+        return await new Promise((resolve, reject) => {
+            try {
+                const { createWorker } = require('tesseract.js')
+                const worker = createWorker({
+                    // langPath: '../../data/ocr',
+                    logger: m => {
+                        // console.log(m)
+                    }
+                });
+                (async () => {
+                    await worker.load();
+                    await worker.loadLanguage('chi_sim');
+                    await worker.initialize('chi_sim');
+                    const { data: { text } } = await worker.recognize(img_src);
+                    // console.log(text);
+                    // 去除字符串中的空格和换行符
+                    if (to_string) {
+                        resolve(text.g_string_replace_all(" ", "").g_string_replace_all("\n", ""));
+                    } else {
+                        resolve(text);
+                    }
+                    await worker.terminate();
+                })();
+
+            } catch (e) {
+                console.log(e)
+                reject(false);
+            }
+        })
+    }
+});
 
 
-
+/**
+ * 从字符串中提取与数组中匹配的词条
+ */
+Object.defineProperty(Object.prototype, "g_str_match_arr", {
+    value: function (match_arr) {
+        let food_add_have = [];
+        for (let i in match_arr) {
+            let value = match_arr[i];
+            if (this.indexOf(value) !== -1) {
+                // console.log("含有")
+                food_add_have.push(value)
+            } else {
+                // console.log("不含有")
+            }
+        }
+        return food_add_have;
+    }
+});
 

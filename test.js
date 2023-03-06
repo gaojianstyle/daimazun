@@ -2,7 +2,7 @@
  * @Author: daimazun.com gaojianstyle@163.com
  * @Date: 2023-02-27 10:45:37
  * @LastEditors: daimazun.com gaojianstyle@163.com
- * @LastEditTime: 2023-03-06 03:15:03
+ * @LastEditTime: 2023-03-06 15:57:18
  * @FilePath: \daimazun\test.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -150,6 +150,14 @@ async function demo1() {
 //     console.log(n.idCard_format("341122199705050432"))
 // })
 
+
+
+let img_src = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fexp-picture.cdn.bcebos.com%2Fa007a9b1eef97fbd431e6000b74133bad24133f5.jpg%3Fx-bce-process%3Dimage%2Fresize%2Cm_lfit%2Cw_500%2Climit_1&refer=http%3A%2F%2Fexp-picture.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671793685&t=5fadd5691c060a78b113fe8bd94449de"
+
+// 原格式输出
+g_ocr(img_src, false).then(r => {
+    console.log(r)
+})
 
 
 // run_time(() => {
